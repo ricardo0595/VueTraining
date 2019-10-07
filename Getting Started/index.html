@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="cont1">
+
+        <h1>{{title}}</h1>
+
+        <ul>
+            {{objectData.a + '//'+ objectData.b}}
+        </ul>
+
+        <a v-bind:href="googleLink.url" v-bind:target="googleLink.blank?'_blank':'_self'">Go to google</a>
+
+        <p v-on:mousemove="showCoordinates">Coordinates:x:{{x}} y:{{y}} <span v-on:mousemove.stop>DEAD ZONE</span></p>
+
+        <p>{{sayTest()}}</p>
+        <input type="text" v-on:input="type">
+
+    </div>
+
+    <script src="vue.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
