@@ -22,7 +22,9 @@
 
             },
             x:0,
-            y:0
+            y:0,
+            myName:"Ricardo",
+            dynamicHtml:"<p style='color:red'>This paragraph was rendered as html</p>"
         },
         methods: {
             type: function (event) {
@@ -34,10 +36,13 @@
                 return myGlobal.test();
             },
             showCoordinates:function(event){
-
+// comment
                 this.x=event.clientX;
                 this.y=event.clientY;
 
+            },
+            alertMe:function(){
+                alert("Alert");
             }
         }
 
