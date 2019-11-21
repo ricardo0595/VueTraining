@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="bulma.min.css"></link>
 </head>
 
 <body>
+    <section class="section">
+        <div class="container" id="cont1">
+          <h1 class="title">
+            Hello World
+          </h1>
+          <p class="subtitle">
+            My first website with <strong>Bulma</strong>!
+          </p>
 
-
-    <div id="cont1">
-
-        <h1>{{title}}</h1>
+          <h1>{{title}}</h1>
 
         <ul>
             {{objectData.a + '//'+ objectData.b}}
@@ -27,17 +33,44 @@
         <!-- hi this is just testing -->
         <input type="text" v-on:input="type">
 
-        <p>Show an alert on enter and space buttons</p>
+
+        <div class="panel">
+            
+        </div>
+        <h2 class="subtitle">Show an alert on enter and space buttons</h2>
+      
         <input type="text" v-on:keyup.enter.space="alertMe">
 
-        <p>Two way binding</p>
+        <h2 class="subtitle">Two way binding</h2>
         <input type="text" v-model="myName"> 
         <p>My name value is {{myName}}</p>
 
-        <p>Html render</p>
+        <h2 class="subtitle">Html render</h2>
         <div v-html="dynamicHtml"></div>
 
-    </div>
+
+        <div class="container">
+
+            <h2 class="subtitle">Computed Method exercise</h2>
+       <button class="button" v-on:click="counter++">Increment</button>
+       <button class="button" v-on:click="counter--">Decrement</button>
+
+       <button class="button" v-on:click="secondCounter++">Increment Second Counter</button>
+        <label for="counter">Counter</label>
+        {{counter}} | {{getCounterInfo()}}
+
+
+        
+        <label for="secondCounter">secondCounter</label>
+        {{secondCounter}} | {{getSecondCounterInfo}}
+
+        </div>
+
+        </div>
+
+      </section>
+
+   
 
     <script src="vue.js"></script>
     <script src="script.js"></script>
