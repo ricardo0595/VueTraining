@@ -27,6 +27,16 @@
         <!-- hi this is just testing -->
         <input type="text" v-on:input="type">
 
+        <p>Show an alert on enter and space buttons</p>
+        <input type="text" v-on:keyup.enter.space="alertMe">
+
+        <p>Two way binding</p>
+        <input type="text" v-model="myName"> 
+        <p>My name value is {{myName}}</p>
+
+        <p>Html render</p>
+        <div v-html="dynamicHtml"></div>
+
     </div>
 
     <script src="vue.js"></script>
