@@ -28,7 +28,21 @@
             counter:0,
             secondCounter:0
         },
-        computed:{
+        watch: {
+
+            counter: function (value) {
+                console.log(value);
+                var vueInstance = this;
+                setTimeout(function () {
+
+                    vueInstance.counter = 0;
+
+                }, 3000)
+
+            }
+
+        },
+        computed: {
 
             //Computed properties are only ware of the properties that they concern about, thus, they will only be executed when the property they are linked to has changed. This helps performance since it does not execute on every DOM update
             getSecondCounterInfo:function(){
