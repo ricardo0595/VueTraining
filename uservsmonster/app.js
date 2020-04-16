@@ -35,9 +35,11 @@ new Vue({
         allDamageList: [],
         fightHistory:[],
         logTypes:{
-            player:"lightblue",
-            monster:"red"
-        }
+            player:"is-primary",
+            monster:"is-danger"
+        },
+
+        
 
     },
     methods: {

@@ -1,59 +1,120 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monster Slayer</title>
-   <link rel="stylesheet" href="../../Getting Started/bulma.min.css">
+    <link rel="stylesheet" href="../../Getting Started/bulma.min.css">
     <!-- <link rel="stylesheet" href="css/foundation.min.css"> -->
     <!-- <link rel="stylesheet" href="css/app.css"> -->
 </head>
+
 <body>
-<div id="app">
-    <section class="row" v-if="gameHasStarted">
-        <div class="small-6 columns">
-            <h1 class="text-center">{{player.name}}</h1>
-            <div class="healthbar-cont">
-                <div class="healthbar" :style="{width:player.health+'%'}" >
-                    
+    <div id="app">
+
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Vue RPG
+                    </h1>
+                    <h2 class="subtitle">
+                        A simple VueJs rpg for practicing purposes only
+                    </h2>
                 </div>
-                <span class="healthPercentage">{{player.health}}%</span>
             </div>
-        </div>
-        <div class="small-6 columns">
-            <h1 class="text-center">{{monster.name}}</h1>
-            <div class="healthbar-cont">
-                <div class="healthbar" :style="{width:monster.health+'%'}">
+        </section>
+
+        <section class="section" >
+
+            <div class="columns" >
+                <div class="column is-one-quarter">
+
+                    <div class="buttons">
+
+                        <button class="button is-primary is-fullwidth" id="start-game" @click="startGame()">START NEW GAME</button>
+
+
+                    <button class="button is-success " id="attack"
+                        @click="startAttack">ATTACK</button>
+                    <button class="button is-info " id="special-attack">SPECIAL ATTACK</button>
+
+                    <button class="button is-warning " id="heal">HEAL</button>
+                    <button class="button is-danger " id="give-up">GIVE UP</button>
+
+                    </div>
                     
+
                 </div>
-                <span class="healthPercentage">{{monster.health}}%</span>
+                <div class="column">
+
+                  
+                        <div class="column is-full" v-if="gameHasStarted">
+
+                            <div class="columns">
+                                <div class="column">
+
+                                    <h1 class="title">{{player.name}}</h1>
+                                    <!-- <div class=""> -->
+                                    <!-- <div class="" :style="{width:player.health+'%'}" >
+                        
+                    </div> -->
+                                    <progress class="progress is-primary is-large" :value="player.health"
+                                        max="100"></progress>
+
+                                    <span class="healthPercentage">{{player.health}}%</span>
+                                    <!-- </div> -->
+
+                                </div>
+                                <div class="column">
+
+
+                                    <h1 class="title">{{monster.name}}</h1>
+                                    <!-- <div class=""> -->
+                                    <progress class="progress is-danger is-large" :value="monster.health"
+                                        max="100"></progress>
+                                    <div class="" :style="{width:monster.health+'%'}">
+
+                                    </div>
+                                    <span class="">{{monster.health}}%</span>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                       
+                    
+
+                </div>
+                
+                <div class="column is-one-quarter">
+
+                    <div class="notification" v-for="log in fightHistory" :class="[log.type]">
+                        {{log.log}}
+                    </div>
+
+
+                </div>
             </div>
+
+
+        </section>
+
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <!-- Any other Bulma elements you want -->
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
         </div>
-    </section>
-    <section class="row controls">
-        <div class="small-12 columns">
-            <button id="start-game" @click="startGame()">START NEW GAME</button>
-        </div>
-    </section>
-    <section class="row controls" v-if="gameHasStarted">
-        <div class="small-12 columns">
-            <button id="attack" @click="startAttack">ATTACK</button>
-            <button id="special-attack">SPECIAL ATTACK</button>
-            <button id="heal">HEAL</button>
-            <button id="give-up">GIVE UP</button>
-        </div>
-    </section>
-    <section class="row log">
-        <div class="small-12 columns">
-            <ul>
-                <li v-for="log in fightHistory" :style="{'background-color':log.type}">
-{{log.log}}
-                </li>
-            </ul>
-        </div>
-    </section>
-</div>
-<script src="../../Getting Started/vue.js"></script>
-<script src="../app.js"></script>
+
+    </div>
+    <script src="../../Getting Started/vue.js"></script>
+    <script src="../app.js"></script>
 </body>
+
 </html>
