@@ -29,7 +29,7 @@
         <section class="section" >
 
             <div class="columns" >
-                <div class="column is-one-quarter">
+                <div class="column is-one-quarter box">
 
                     <div class="buttons">
 
@@ -37,10 +37,10 @@
 
 
                     <button class="button is-success " id="attack"
-                        @click="startAttack">ATTACK</button>
-                    <button class="button is-info " id="special-attack">SPECIAL ATTACK</button>
+                        @click="startAttack" :disabled="!player.attackAllowed" :class="{'is-loading':!player.attackAllowed}">ATTACK</button>
+                    <button class="button is-info" id="special-attack">SPECIAL ATTACK</button>
 
-                    <button class="button is-warning " id="heal">HEAL</button>
+                    <button @click="heal(player)" class="button is-warning " id="heal">HEAL</button>
                     <button class="button is-danger " id="give-up">GIVE UP</button>
 
                     </div>
@@ -56,6 +56,7 @@
                                 <div class="column">
 
                                     <h1 class="title">{{player.name}}</h1>
+                                    
                                     <!-- <div class=""> -->
                                     <!-- <div class="" :style="{width:player.health+'%'}" >
                         
@@ -91,7 +92,7 @@
 
                 </div>
                 
-                <div class="column is-one-quarter">
+                <div class="column is-one-quarter box">
 
                     <div class="notification" v-for="log in fightHistory" :class="[log.type]">
                         {{log.log}}
@@ -104,12 +105,19 @@
 
         </section>
 
-        <div class="modal">
+        {{determineWinner}}
+        <div class="modal" :class="{'is-active':winner!==null}">
             <div class="modal-background"></div>
-            <div class="modal-content">
+            <div class="modal-content" v-if="winner!==null">
+
+                <div class="notification" :class="[winner.colorClass]">
+                    <!-- <button class="delete"></button> -->
+                    <p>{{winner.name}} ha ganado la partida!</p>
+                  </div>
+
                 <!-- Any other Bulma elements you want -->
             </div>
-            <button class="modal-close is-large" aria-label="close"></button>
+            <button @click="closeModal($event)" class="modal-close is-large" aria-label="close"></button>
         </div>
 
     </div>
